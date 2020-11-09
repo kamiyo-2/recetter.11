@@ -22,8 +22,12 @@ ActiveRecord::Schema.define(version: 2020_11_09_105224) do
   end
 
   create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_recipe_tag_relations_on_recipe_id"
+    t.index ["tag_id"], name: "index_recipe_tag_relations_on_tag_id"
   end
 
   create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,8 +43,12 @@ ActiveRecord::Schema.define(version: 2020_11_09_105224) do
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.bigint "recipe_id"
+    t.bigint "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_tags_on_recipe_id"
+    t.index ["tag_id"], name: "index_tags_on_tag_id"
   end
 
   create_table "texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,6 +77,10 @@ ActiveRecord::Schema.define(version: 2020_11_09_105224) do
   end
 
   add_foreign_key "foodstuffs", "recipes"
+  add_foreign_key "recipe_tag_relations", "recipes"
+  add_foreign_key "recipe_tag_relations", "tags"
   add_foreign_key "recipes", "users"
+  add_foreign_key "tags", "recipes"
+  add_foreign_key "tags", "tags"
   add_foreign_key "texts", "recipes"
 end

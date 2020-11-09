@@ -5,8 +5,5 @@ class Recipe < ApplicationRecord
   has_many :texts
   has_many :foodstuffs
   belongs_to :user
-
-
-  validates :title, :details, :process, :main_image_id, 
-  　　　　　　 presence: true
+  validates :title, :details, :process, presence: true
 end

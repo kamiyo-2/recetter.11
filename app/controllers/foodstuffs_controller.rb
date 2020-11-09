@@ -1,5 +1,21 @@
 class FoodstuffsController < ApplicationController
   
+  def new
+    @foodstuff = Foodstuff.new
+  end
+
+
+  def create
+    @foodstuff = Foodstuff.new(foodstuff_params)
+    if @foodstuff.save
+      redirect_to recipe_path(@foodstuff.recipe_id), method: :get
+      # redirect_to new_recipe_text_path( @foodstuff.recipe_id)
+    else
+      @recipe = @foodstuff.recipe
+      @foodstuffs = @recipe.texts
+      render :edit
+    end
+  end
 
   def edit
     @recipe = Recipe.find(params[:recipe_id])
@@ -8,16 +24,6 @@ class FoodstuffsController < ApplicationController
   end
 
 
-    def create
-      @foodstuff = Foodstuff.new(foodstuff_params)
-      if @foodstuff.save
-        redirect_to edit_recipe_path(@recipe.id)
-      else
-        @recipe = @foodstuff.recipe
-        @foodstuffs = @recipe.texts
-        render :edit
-      end
-    end
   
     def update
       @foodstuff = Foodstuff.find(params[:id])

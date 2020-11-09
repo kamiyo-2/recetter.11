@@ -25,21 +25,21 @@
 
 
 <div class="prototype__comments">
-          <% if user_signed_in?%>
+   <% if user_signed_in?%>
             <%= form_with(model: [@recipe, @foodstuff], local: true) do |f| %>
-              <%= form_with(model: [@recipe, @text], local: true) do |f| %>
               <div class="field">
                 <%= f.label :material, "コメント" %><br />
-                <%= f.text_field :material %>
+                <%= f.text_area :material %>
                   <%= f.label :quantity, "コメント" %><br />
-                <%= f.text_field :quantity %>
+                <%= f.text_area :quantity %>
               </div>
+
 
               <div class="actions">
                 <%= f.submit "送信する", class: :form__btn  %>
               </div>
             <% end %> 
-          <% end %> 
+        
           <ul class="comments_lists">
             <% if @foodstuff %>
            <% @foodstuffs.each do |foodstuff| %>

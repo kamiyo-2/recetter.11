@@ -1,9 +1,13 @@
 class TextsController < ApplicationController
-  
+  def new
+    @text = Text.new
+  end
+
   def create
     @text = Text.new(text_params)
     if @text.save
-      redirect_to edit_recipe_path(@recipe.id)
+      
+      redirect_to recipe_path(@text.recipe_id), method: :get
     else
       @recipe = @text.recipe
       @texts = @recipe.texts
@@ -12,6 +16,8 @@ class TextsController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:recipe_id])
+    redirect_to root_path if current_user.id != @recipe.user_id
     @recipe = Recipe.find(params[:recipe_id])
     @text = Text.new
     @texts = Text.where(recipe_id: @recipe.id).order(:position)
