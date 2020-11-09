@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_104827) do
+ActiveRecord::Schema.define(version: 2020_11_09_105224) do
+
+  create_table "foodstuffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "material", null: false
+    t.string "quantity", null: false
+    t.bigint "recipe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_foodstuffs_on_recipe_id"
+  end
 
   create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -59,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_104827) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "foodstuffs", "recipes"
   add_foreign_key "recipes", "users"
   add_foreign_key "texts", "recipes"
 end
