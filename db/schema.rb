@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_104708) do
+ActiveRecord::Schema.define(version: 2020_11_09_104827) do
 
   create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2020_11_09_104708) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.string "text_image_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_texts_on_recipe_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -51,4 +60,5 @@ ActiveRecord::Schema.define(version: 2020_11_09_104708) do
   end
 
   add_foreign_key "recipes", "users"
+  add_foreign_key "texts", "recipes"
 end
