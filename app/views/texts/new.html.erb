@@ -1,0 +1,21 @@
+<%= form_with(model: @text, url:  recipe_texts_path, local: true) do |f| %>
+
+   
+
+  
+  <div class="field">
+    <%= f.label :text, "料理名" %><br />
+    <%= f.text_field :text %>
+  </div>
+
+   <div class="field">
+    <%= f.label :text_image, "メインの画像" %><br />
+    <%= f.attachment_field :text_image %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+
+<% end %>

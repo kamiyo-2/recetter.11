@@ -1,0 +1,58 @@
+   
+  <%= form_with(model: @recipe, url: recipes_path, local: true) do |f| %>
+
+   
+
+  <div class="field">
+    <%= f.label :title, "料理名" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+   <div class="field">
+    <%= f.label :main_image, "メインの画像" %><br />
+    <%= f.file_field :main_image %>
+  </div>
+
+
+   <% 2.times do %>
+     <%= f.fields_for :texts do |text| %>
+       <%= text.text_field 'text' %>
+         <div class="field">
+           <%= f.label :main_image, "写真", class: "label" %>
+           <%= f.attachment_field :main_image, class: "input" %>
+         </div>
+     <% end %>
+   <% end %>
+
+  <div class="field">
+   <%= f.label :process, "材料" %><br />
+    <%= f.text_area :process, class: :form__text %>
+  </div>
+
+  
+
+  <div class="field">
+    <%= f.label :material, "作り方" %><br />
+    <%= f.text_area :material, class: :form__text %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+
+  <div class="check_box">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+     <div>
+       <%= tag.label do %>
+         <%= tag.check_box %>
+         <%= tag.text %>
+       <% end %>
+     </div>
+   <% end %>
+ </div>
+
+<% end %>
+
+
+

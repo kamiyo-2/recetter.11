@@ -1,0 +1,97 @@
+<main class="main">
+  <div class="inner">
+    <div class="prototype__wrapper">
+      <p class="prototype__hedding">
+        <%= @recipe.title %>
+      </p>
+      
+      <div class="main_image">
+         <%= attachment_image_tag @recipe, :main_image, class: :card_img  %>
+      </div>
+      <div class="prototype__body">
+        <div class="prototype__detail">
+          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__message">
+            <%= @recipe.details %>
+          </p>
+        </div>
+        <div class="prototype__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message">
+            <%= @recipe.process %>
+          </p>
+        </div>
+
+
+
+<div class="prototype__comments">
+          <% if user_signed_in?%>
+            <%= form_with(model: [@recipe, @foodstuff], local: true) do |f| %>
+              <%= form_with(model: [@recipe, @text], local: true) do |f| %>
+              <div class="field">
+                <%= f.label :material, "コメント" %><br />
+                <%= f.text_field :material %>
+                  <%= f.label :quantity, "コメント" %><br />
+                <%= f.text_field :quantity %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "送信する", class: :form__btn  %>
+              </div>
+            <% end %> 
+          <% end %> 
+          <ul class="comments_lists">
+            <% if @foodstuff %>
+           <% @foodstuffs.each do |foodstuff| %>
+              <li class="comments_list">
+              <p>
+               <%= foodstuff.material %>
+              <div class="prototype__image">
+        <%= foodstuff.quantity %>
+      </div>
+              </p> 
+              </li>
+              <% end %>
+             <% end %>
+          </ul>
+        </div>
+ <% end %>
+
+ </div>
+
+
+
+        <div class="prototype__comments">
+          <% if user_signed_in?%>
+            <%= form_with(model: [@recipe, @text], local: true) do |f| %>
+              <div class="field">
+                <%= f.label :text, "コメント" %><br />
+                <%= f.text_field :text %>
+                  <%= f.label :text_image, "コメント" %><br />
+                <%= f.attachment_field :text_image %>
+              </div>
+
+              
+              <div class="actions">
+                <%= f.submit "送信する", class: :form__btn  %>
+              </div>
+            <% end %> 
+          <% end %> 
+          <ul class="comments_lists">
+            <% if @text %>
+           <% @texts.each do |text| %>
+              <li class="comments_list">
+              <p>
+               <%= text.text %>
+              <div class="prototype__image">
+         <%= attachment_image_tag text, :text_image, class: :card_img  %>
+      </div>
+              </p> 
+              </li>
+              <% end %>
+             <% end %>
+          </ul>
+        </div>
+    </div>
+  </div>
+</main>

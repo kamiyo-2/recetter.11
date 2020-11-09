@@ -10,7 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_101130) do
+ActiveRecord::Schema.define(version: 2020_11_09_105224) do
+
+  create_table "foodstuffs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "material", null: false
+    t.string "quantity", null: false
+    t.bigint "recipe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_foodstuffs_on_recipe_id"
+  end
+
+  create_table "recipe_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_recipe_tag_relations_on_recipe_id"
+    t.index ["tag_id"], name: "index_recipe_tag_relations_on_tag_id"
+  end
+
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "details", null: false
+    t.text "process", null: false
+    t.string "main_image_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "recipe_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_tags_on_recipe_id"
+    t.index ["tag_id"], name: "index_tags_on_tag_id"
+  end
+
+  create_table "texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text", null: false
+    t.string "text_image_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_texts_on_recipe_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +76,11 @@ ActiveRecord::Schema.define(version: 2020_11_09_101130) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "foodstuffs", "recipes"
+  add_foreign_key "recipe_tag_relations", "recipes"
+  add_foreign_key "recipe_tag_relations", "tags"
+  add_foreign_key "recipes", "users"
+  add_foreign_key "tags", "recipes"
+  add_foreign_key "tags", "tags"
+  add_foreign_key "texts", "recipes"
 end
