@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Recetter11</title>
+    <title>Recetter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="" />
+        </div>
+        <nav class="header-nav">
+          <form class="form">
+            <input type="search" class="form-input" placeholder="search" />
+            <button class="form-button"><i class="fa fa-search"></i></button>
+          </form>  
+         <% if user_signed_in? %>
+            <div class="nav__right"> 
+               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
+               <%= link_to "New Proto",  new_recipe_path, class: :nav__btn %>
+             </div>
+          <% else %>
+            <div class="nav__right">
+              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+            </div>
+          <% end %>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
