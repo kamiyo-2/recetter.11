@@ -1,13 +1,24 @@
- <main class="main">
-  <div class="inner">
-       <% if user_signed_in? %>
-      <div class="greeting">
-         こんにちは、
-        <%= link_to "#{current_user.name}さん", "/users/#{current_user.id}",  class: :greeting__link %>
-       </div>
-      <% end %>
-    <div class="card__wrapper">
-        <%= render partial: "recipes/recipe", collection: @recipes %>
+<main class="main">
+  <div class="tag-inner">
+    <div class='tag-name'>
+       <%= @tag.name %>
+    </div>   
+      <div class="tag-contents">
+        <% @recipes.each do |recipe| %>
+          <div class="tag-content">
+            <div class="card__body">
+              <div class='tag-image'>
+                <%= attachment_image_tag recipe, :main_image  %>
+              </div>
+            </div>
+            <p class="card__summary">
+              <a href="/tags/2">
+                <%= recipe.title %>
+              </a>
+            </p>
+          </div> 
+        <% end %>
+      </div>
     </div>
   </div>
 </main>
