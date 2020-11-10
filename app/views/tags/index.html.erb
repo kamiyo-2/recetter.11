@@ -1,5 +1,5 @@
 <main class="main">
-  <div class="inner">
+  <div class="tag-inner">
        <% if user_signed_in? %>
       <div class="greeting">
          こんにちは、
@@ -9,27 +9,26 @@
 
 
     
-    <div class="card__wrapper">
-      <div class="card">
+    <div class="tag-contents">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/1">
                 <%= image_tag "french.1.jpg" %>
+                 <%# <%= link_to image_tag ("french.1.jpg",class:"card__img"), "/tags/1" %> %>
               </a>
-               <%# <%= link_to image_tag ("french.1.jpg",class:"card__img"), "/tags/1" %> %>
             </div>
             <p class="card__summary">
               <a href="/tags/1">
                  <%= @tags.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
            </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/2">
                 <%= image_tag "french.2.jpg" %>
               </a>
@@ -39,14 +38,13 @@
                 <%= @tagss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
       
       
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/3">
                 <%= image_tag "french.3.jpg" %>
               </a>
@@ -56,13 +54,12 @@
                 <%= @tagsss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/4">
                 <%= image_tag "japan.1.jpg" %>
               </a>
@@ -72,13 +69,12 @@
                 <%= @tagssss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/5">
                 <%= image_tag "japan.2.jpg" %>
               </a>
@@ -88,13 +84,12 @@
                 <%= @tagsssss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/6">
                 <%= image_tag "japan.3.jpg" %>
               </a>
@@ -104,13 +99,12 @@
                 <%= @tagssssss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/7">
                 <%= image_tag "chinese.1.jpg" %>
               </a>
@@ -120,13 +114,12 @@
                 <%= @tagsssssss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/8">
                 <%= image_tag "chinese.2.jpg" %>
               </a>
@@ -136,13 +129,12 @@
                 <%= @tagssssssss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
 
-      <div class="card">
+      <div class="tag-content">
         <div class="card__body">
-            <div class='card__img'>
+            <div class='tag-image'>
               <a href="/tags/9">
                 <%= image_tag "chinese.3.jpg" %>
               </a>
@@ -152,11 +144,8 @@
                 <%= @tagsssssssss.name %>
               </a>
             </p>
-           <%# <%= link_to recipe.user.nickname, user_path(recipe.user.id), class: :card__user %> %>
         </div> 
       </div>
-
-      
     </div>
   </div>
 </main>
