@@ -12,9 +12,7 @@
               </div>
             </div>
             <p class="card__summary">
-              <a href="/tags/2">
-                <%= recipe.title %>
-              </a>
+              <%= link_to recipe.title, recipe_path(recipe.id), method: :get, class: :card__title%>
             </p>
           </div> 
         <% end %>
@@ -22,6 +20,7 @@
     </div>
   </div>
 </main>
+ 
  
 
  
