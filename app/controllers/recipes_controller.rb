@@ -7,8 +7,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       @recipe[:id]
-      redirect_to recipe_path(@recipe.id), method: :get
-      # redirect_to new_recipe_foodstuff_path(@recipe.id)
+      redirect_to new_recipe_foodstuff_path(@recipe.id)
     else
       render :new
     end
