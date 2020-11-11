@@ -1,22 +1,62 @@
-<%= form_with(model: @text, url:  recipe_foodstuffs_path, local: true) do |f| %>
+<div class="form-wrapper">
+  <div class="container">
 
-   
+    <div class="">
+      <h2 class="page-heading">新規レシピ投稿</h2>       
+  <%= form_with(model: @recipe, url: recipes_path, local: true) do |f| %>
+ <div class="field">
+   <%= f.label :process, "作り方" %><br />
+    <p class="detail__message">
+            <%= @recipe.process %>
+          </p>
+  </div>
 
   
+  <div class="main-contents">
+ <div class="image-content">
+              <%= attachment_image_tag @recipe, :main_image, class: :card_img  %>
+   </div>
+
+<div class="material-contents">
+
+<p class="prototype__hedding">
+        <%= @recipe.title %>
+      </p>
+
+  <p class="detail__message">
+            <%= @recipe.details %>
+          </p>
+
+          
+<% end %>
+<%= form_with(model: @text, url:  recipe_foodstuffs_path, local: true) do |f| %>
+<div class="material-content">
   <div class="field">
-    <%= f.label :material, "料理名" %><br />
+    <%= f.label :material, "材料" %><br />
     <%= f.text_field :material %>
   </div>
 
    <div class="field">
-    <%= f.label :quantity, "メインの画像" %><br />
+    <%= f.label :quantity, "分量" %><br />
     <%= f.text_field :quantity %>
   </div>
 
-
+</div>
   <div class="actions">
     <%= f.submit "保存する", class: :form__btn  %>
   </div>
 
 <% end %>
+
+
+</div>
+</div>
+    </div>
+  </div>
+</div>
+      
+
+
+
+
 

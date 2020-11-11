@@ -1,15 +1,17 @@
 class FoodstuffsController < ApplicationController
   
   def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @foodstuffs = Foodstuff.where(recipe_id: @recipe.id).order(:position)
     @foodstuff = Foodstuff.new
   end
 
+  
 
   def create
     @foodstuff = Foodstuff.new(foodstuff_params)
     if @foodstuff.save
-      redirect_to recipe_path(@foodstuff.recipe_id), method: :get
-      # redirect_to new_recipe_text_path( @foodstuff.recipe_id)
+    redirect_to new_recipe_text_path( @foodstuff.recipe_id)
     else
       @recipe = @foodstuff.recipe
       @foodstuffs = @recipe.texts
@@ -34,6 +36,6 @@ class FoodstuffsController < ApplicationController
   
     private
     def foodstuff_params
-      params.require(:foodstuff).permit(:material, :quantity).merge(recipe_id: params[:recipe_id])
+      params.permit(:material, :quantity).merge(recipe_id: params[:recipe_id])
     end
 end

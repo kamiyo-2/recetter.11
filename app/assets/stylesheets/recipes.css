@@ -1,0 +1,60 @@
+
+.form-wrapper {
+width: 100%;
+min-height: 100vh;
+position: relative;
+background-color: white;
+padding-top: 20px;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+
+.recipe-contents {
+  width: 28%;
+    margin: 15px 2.5%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #F96167;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #fffefc;
+    margin: 15px;
+    float: left;
+    box-shadow: 3px 3px 3px 3px #faebd7;
+}
+
+.main-contents {
+  display: flex;
+}
+
+.text-content {
+  width: 70%;
+}
+
+.tag-list {
+  list-style: none;
+  
+}
+
+
+.form_text {
+  width: 100%;
+  height: 50px;
+}
+
+.form_prosess {
+  width: 100%;
+  height: 150px;
+}
+
+.text-content {
+  width: 50%;
+}

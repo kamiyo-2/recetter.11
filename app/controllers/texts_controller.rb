@@ -1,7 +1,14 @@
 class TextsController < ApplicationController
   def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @foodstuffs = Foodstuff.where(recipe_id: @recipe.id)
+
+    @texts = Text.where(recipe_id: @recipe.id).order(:position)
     @text = Text.new
   end
+
+
+
 
   def create
     @text = Text.new(text_params)
