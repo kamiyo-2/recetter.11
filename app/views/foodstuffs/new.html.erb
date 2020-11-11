@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <div class="container">
+  <div class="tag-inner">
 
     <div class="">
       <h2 class="page-heading">新規レシピ投稿</h2>       
@@ -12,22 +12,29 @@
   </div>
 
   
+
+
   <div class="main-contents">
  <div class="image-content">
-              <%= attachment_image_tag @recipe, :main_image, class: :card_img  %>
+              <%= attachment_image_tag @recipe, :main_image %>
    </div>
-
-<div class="material-contents">
-
-<p class="prototype__hedding">
-        <%= @recipe.title %>
-      </p>
-
-  <p class="detail__message">
-            <%= @recipe.details %>
-          </p>
-
-          
+   <div class="from-content">
+     <div class="title-content">
+       <div class="title-name">
+         <p> 料理名 </p>
+       </div>
+     <div class="valu-name">
+        <p><%= @recipe.title %></p>
+       </div>
+    </div>
+    <div class="details-content">
+    <div class="title-name">
+         <p> 分量(何人前) </p>
+          </div>   
+        <div class="valu-name">
+      <p> <%= @recipe.details %></p>
+      </div>
+    </div>    
 <% end %>
 <%= form_with(model: @text, url:  recipe_foodstuffs_path, local: true) do |f| %>
 <div class="material-content">
