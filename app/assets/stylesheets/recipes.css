@@ -42,6 +42,7 @@ padding-top: 20px;
 .tag-list {
   list-style: none;
   
+  
 }
 
 
@@ -57,4 +58,20 @@ padding-top: 20px;
 
 .text-content {
   width: 50%;
+}
+
+.image-content{
+  width: 45%;
+  margin: 15px 2.5%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #F96167;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #fffefc;
+
+  margin: 15px;
+  float: left;
+
+  box-shadow: 3px 3px 3px 3px #faebd7;
 }

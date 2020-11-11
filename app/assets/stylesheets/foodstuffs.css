@@ -5,3 +5,36 @@
 .material-content {
  display: flex;
 }
+
+.image-content > img {
+  height: 400px;
+}
+
+.from-content {
+  position: relative;
+  width: 50%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.title-content {
+  display: flex;
+}
+
+.details-content {
+  display: flex;
+}
+
+p {
+  margin-top: 0;
+    margin-bottom: 1rem;
+  
+}
+.title-name {
+  width: 30%;
+}
+
+.valu-name {
+  width: 30%;
+}

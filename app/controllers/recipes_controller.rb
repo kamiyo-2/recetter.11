@@ -4,7 +4,9 @@ class RecipesController < ApplicationController
   end
 
   def create
+    
     @recipe = Recipe.new(recipe_params)
+    @recipe.valid?
     if @recipe.save
       @recipe[:id]
       redirect_to new_recipe_foodstuff_path(@recipe.id)
